@@ -1,11 +1,11 @@
 <template>
   <Header msg="Play tic tac toe against browser" />
-  <div v-if="!color">
+  <div v-if="!playersColor">
     <ColorPicker :selectColor="pickColor"/>
   </div>
-  <div v-if="color">
-    <Info :playersColor="this.color" />
-    <Field :playersColor="this.color" />
+  <div v-if="playersColor">
+    <Info :playersColor="this.playersColor" />
+    <Field :playersColor="this.playersColor" :botColor="this.botColor" />
   </div>
 </template>
 
@@ -26,14 +26,19 @@ export default {
   data() {
     
     return {
-      color: ''
+      playersColor: '',
+      botColor: '',
     }
   },
 
   methods: {
     pickColor: function(color) {
-      console.log('called')
-      this.color = color;
+      this.playersColor = color;
+      if (this.playersColor === 'red') {
+        this.botColor = 'yellow';
+      } else {
+        this.botColor = 'red';
+      }
     }
   }
 }
