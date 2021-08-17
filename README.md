@@ -1,7 +1,7 @@
 # Project Title
 
 A game of tic-tac-toe against the browser.
-- [ADD DEMO LINK HERE]()
+- [DEMO LINK](https://viktor-lepekha.github.io/tic_tac_toe/)
 
 ## Description
 
