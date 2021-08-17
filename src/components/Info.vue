@@ -1,7 +1,7 @@
 <template>
-  <div class="info">
+  <h2 class="info">
     You are playing with {{playersColor}} color! 
-  </div>
+  </h2>
 </template>
 
 <script>

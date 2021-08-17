@@ -1,6 +1,5 @@
 <template>
   <div class="field">
-  
     <div
     class="tile"
     v-bind:class="{
@@ -17,13 +16,19 @@
     :isChecked="tile.isChecked"
     >
     </div>
+    <button
+      class="button"
+      v-on:click="this.restart"
+    >
+      Start again!
+    </button>
     <h3 v-if="winner">{{this.winner}} has won the game!</h3>
     <h3 v-if="isDraw">It's a draw!</h3>
+   
   </div>
 </template>
 
 <script>
-// import Tile from './Tile.vue'
 export default {
   name: 'Field',
   props: ['playersColor', 'botColor'],
@@ -51,7 +56,7 @@ export default {
       } else {
         this.tiles[selectedTile].isChecked = true;
         this.tiles[selectedTile].color = this.playersColor;
-        this.tiles[selectedTile].value = "user";
+        this.tiles[selectedTile].value = "User";
         setTimeout(this.makeBotMove, 500);
       }
           
@@ -65,10 +70,17 @@ export default {
       } else {
         this.tiles[tileToCheck].isChecked = true;
         this.tiles[tileToCheck].color = this.botColor;
-        this.tiles[tileToCheck].value = "bot";
+        this.tiles[tileToCheck].value = "Bot";
         this.calculateWinner(this.tiles)
       }
       } else {
+        if (this.tiles.some(tile => tile.isChecked === false)) {
+          return;
+        }
+        this.calculateWinner(this.tiles)
+        if (!this.winner) {
+          this.isDraw = true;
+        }
         return
       }      
     },
@@ -88,11 +100,15 @@ export default {
         const [a, b, c] = lines[i];
         if (tiles[a].value && tiles[a].value === tiles[b].value && tiles[a].value === tiles[c].value) {
           this.winner = tiles[a].value;
+          return
         } 
       }
       return;
-      } 
-  
+      },
+
+    restart: function() {
+      location.reload();
+    }
   },
   // components: {
   //   Tile
@@ -120,5 +136,11 @@ export default {
 
 .yellow {
   background-color: yellow;
+}
+
+.button {
+  display: inline-block;
+  width: 80px;
+  height: 50px;
 }
 </style>
