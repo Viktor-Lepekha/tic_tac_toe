@@ -1,24 +1,20 @@
-# tic_tac_toe
+# Project Title
 
-## Project setup
-```
-npm install
-```
+A game of tic-tac-toe against the browser.
+- [ADD DEMO LINK HERE]()
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Description
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Application written using Vue.js framework
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Local development
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Dependencies
+* Node v12.16.3 and higher
+* NPM v6.14.4 and higher
+
+
+### Installing
+* Fork and clone this repository
+* Run `npm install` in your terminal
+* Run `npm start`
